@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useFadeUp } from '../hooks/useFadeUp';
 
 const MagicSection = () => {

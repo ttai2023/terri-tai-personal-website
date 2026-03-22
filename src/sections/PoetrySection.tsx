@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useFadeUp } from '../hooks/useFadeUp';
-import { te } from 'date-fns/locale';
 
 const poems = [
   {
