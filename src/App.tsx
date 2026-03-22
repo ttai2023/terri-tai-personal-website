@@ -22,8 +22,8 @@ function App() {
         <AboutSection />
         <MagicSection />
         <PaintingsSection />
-        <MusicSection />
         <PoetrySection />
+        <MusicSection />
         <Footer />
       </main>
     </div>
