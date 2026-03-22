@@ -24,13 +24,13 @@ const AboutSection = () => {
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <div ref={headRef} className="fade-up" style={{ marginBottom: '4rem' }}>
           <div className="section-label" style={{ marginBottom: '0.8rem' }}>✦ The Person</div>
-          <h2 className="section-title">About</h2>
+          <h2 className="section-title">About Me</h2>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start', marginBottom: '5rem' }}>
           <div ref={textRef} className="fade-up">
             <p style={{ fontFamily: "'EB Garamond',serif", fontSize: '1.2rem', color: 'var(--silver)', lineHeight: 1.9, marginBottom: '1.5rem' }}>
-              I'm Terri — a Computer Engineering student at UC San Diego. By training, I build autonomous systems, robotics, and intelligent software. By nature, I make things that don't need to be useful to be true.
+              I'm Terri Tai — a Computer Engineering student at UC San Diego. By training, I build autonomous systems, robotics, and intelligent software. By nature, I make things that don't need to be useful or practical — just human.
             </p>
             <p style={{ fontFamily: "'EB Garamond',serif", fontSize: '1.1rem', color: 'var(--silver-dim)', lineHeight: 1.9, marginBottom: '1.5rem', fontStyle: 'italic' }}>
               I've always believed that creativity and engineering are the same impulse — the urge to make something from nothing, to impose meaning on chaos. One uses code; the other uses paint.

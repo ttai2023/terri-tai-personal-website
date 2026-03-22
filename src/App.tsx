@@ -19,11 +19,11 @@ function App() {
       <Navigation />
       <main style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection />
+        <AboutSection />
         <MagicSection />
         <PaintingsSection />
         <MusicSection />
         <PoetrySection />
-        <AboutSection />
         <Footer />
       </main>
     </div>

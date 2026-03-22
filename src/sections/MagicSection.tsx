@@ -5,9 +5,9 @@ const MagicSection = () => {
   const headRef = useFadeUp();
 
   const videos = [
-    { title: 'Card Manipulation', desc: 'A study in sleight of hand', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { title: 'Close-Up Magic', desc: 'Wonder at your fingertips', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-    { title: 'Stage Performance', desc: 'An evening of impossible things', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+    { title: 'Four Card Reveal ft Lan Gao', desc: 'A study in sleight of hand', url: 'https://www.youtube.com/embed/1bwCMJ58RMo' },
+    { title: 'Chicago Opener ft WIC UCSD', desc: 'Wonder at your fingertips', url: 'https://youtube.com/embed/fvGs5_y6nDk?feature=share' },
+    { title: 'Queen Swap ft UCSD Womens Rugby', desc: 'An evening of impossible things', url: 'https://youtube.com/embed/Pcgyfyw1fgw?feature=share' },
   ];
 
   return (
@@ -36,7 +36,7 @@ const MagicSection = () => {
 
         <div style={{ marginTop:'4rem',textAlign:'center' }}>
           <p style={{ fontFamily:"'EB Garamond',serif",fontStyle:'italic',color:'var(--silver-dim)',fontSize:'0.95rem',letterSpacing:'.05em' }}>
-            Replace the embeds above with your real performance videos
+            Watch my performances and see the magic come alive!
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ const VideoCard = ({ title, desc, url, index }: { title:string; desc:string; url
       <span className="ornament-corner ornament-bl"/><span className="ornament-corner ornament-br"/>
 
       {/* Stage frame */}
-      <div className="stage-wrapper" style={{ aspectRatio:'16/9', position:'relative' }}>
+      <div className="stage-wrapper" style={{ aspectRatio: '9/16', position:'relative' }}>
         {/* Curtain effect */}
         <div style={{ position:'absolute',inset:0,zIndex:2,pointerEvents:'none',
           background:'linear-gradient(to right, rgba(20,5,35,0.6) 0%,transparent 15%,transparent 85%,rgba(20,5,35,0.6) 100%)',

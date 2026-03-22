@@ -42,7 +42,19 @@ const HeroSection = () => {
           boxShadow: '0 0 60px rgba(201,169,110,0.08), inset 0 0 40px rgba(0,0,0,0.5)',
           animation: 'floatOrb 6s ease-in-out infinite',
         }}>
-          <span style={{ fontFamily: "'Cinzel',serif", fontSize: 'clamp(2rem,6vw,3.5rem)', color: 'var(--gold)', fontWeight: 700, letterSpacing: '0.05em', opacity: 0.9 }}>TT</span>
+          <img
+            src="/profile.jpeg"
+            alt="Terri Tai"
+            style={{
+              width: '100%',
+              height: '100%',
+              transform: 'scale(1.1)',         // ← zoom level, adjust to taste
+              transformOrigin: 'center 30%',  // ← shifts focus upward (good for faces)
+              objectFit: 'cover',
+              borderRadius: '50%',
+              filter: 'brightness(0.92) contrast(1.05)',
+            }}
+          />
         </div>
 
         {/* Orbiting accent dots */}
@@ -77,7 +89,7 @@ const HeroSection = () => {
 
       {/* Subtitle */}
       <p ref={subRef} style={{ fontFamily: "'EB Garamond',serif", fontSize: 'clamp(1rem,2.5vw,1.35rem)', color: 'var(--silver-dim)', maxWidth: '560px', lineHeight: 1.75, fontStyle: 'italic', marginBottom: '3rem' }}>
-        Computer engineer by day. Magician, painter, poet, and musician by the light of distant stars.
+        Computer engineer by day. Part-time magician, painter, poet, and musician by night.
       </p>
 
       <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center' }}>

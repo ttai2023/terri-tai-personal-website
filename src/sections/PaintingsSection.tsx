@@ -1,12 +1,10 @@
 import { useFadeUp } from '../hooks/useFadeUp';
 
 const paintings = [
-  { title: 'Nebula Study I', medium: 'Acrylic on canvas', year: '2024', placeholder: 'linear-gradient(135deg,#1a0035 0%,#0c1a4e 50%,#2d0a4a 100%)' },
-  { title: 'Tidal Memory', medium: 'Watercolor', year: '2024', placeholder: 'linear-gradient(160deg,#0a2a3a 0%,#1a4a5a 40%,#0d1535 100%)' },
-  { title: 'Interior Cosmos', medium: 'Oil on board', year: '2023', placeholder: 'linear-gradient(120deg,#2a1a00 0%,#4a2a0a 50%,#1a0a20 100%)' },
-  { title: 'Still Life with Stars', medium: 'Mixed media', year: '2023', placeholder: 'linear-gradient(145deg,#0a1a10 0%,#1a3a20 50%,#0a0a25 100%)' },
-  { title: 'Liminal Space', medium: 'Acrylic', year: '2023', placeholder: 'linear-gradient(135deg,#1a0a2a 0%,#2a1a4a 40%,#0a1535 100%)' },
-  { title: 'Portrait of Silence', medium: 'Charcoal', year: '2022', placeholder: 'linear-gradient(155deg,#151515 0%,#2a2a2a 50%,#0a0a15 100%)' },
+  { title: 'Fighter Jet', medium: 'Oil on canvas', image: '/fighter_jet.jpeg', year: '2024'},
+  { title: 'Lost Astronaut', medium: 'Oil on canvas', image: '/lost_astronaut.jpeg', year: '2024'},
+  { title: 'Rooftop Crash', medium: 'Oil on canvas', image: '/rooftop_crash.jpeg', year: '2023'},
+  { title: 'Space Underwater', medium: 'Oil on canvas', image: '/space_underwater.jpeg', year: '2023'},
 ];
 
 const PaintingsSection = () => {
@@ -35,7 +33,6 @@ const PaintingsSection = () => {
 
         <div style={{ marginTop:'3rem',textAlign:'center' }}>
           <p style={{ fontFamily:"'EB Garamond',serif",fontStyle:'italic',color:'var(--silver-dim)',fontSize:'0.9rem' }}>
-            Replace placeholders with your actual painting images
           </p>
         </div>
       </div>
@@ -43,44 +40,57 @@ const PaintingsSection = () => {
   );
 };
 
-const PaintingCard = ({ title, medium, year, placeholder, index }: { title:string;medium:string;year:string;placeholder:string;index:number }) => {
+const PaintingCard = ({ title, medium, year, image, index }: { 
+  title: string; medium: string; year: string; image?: string; index: number 
+}) => {
   const ref = useFadeUp();
 
   return (
-    <div ref={ref} className="fade-up gallery-item card-glass" style={{ borderRadius:'2px',overflow:'hidden',transitionDelay:`${index*0.08}s` }}>
-      {/* Painting placeholder / image */}
+    <div ref={ref} className="fade-up gallery-item card-glass" style={{ borderRadius:'2px', overflow:'hidden', transitionDelay:`${index*0.08}s` }}>
       <div style={{
-        aspectRatio: index % 3 === 1 ? '3/4' : '4/3',
-        background: placeholder,
-        display:'flex',alignItems:'center',justifyContent:'center',
-        position:'relative',overflow:'hidden',
+        aspectRatio: '3/4',
+        position: 'relative', overflow: 'hidden',
+        background: '#0a0a15',
       }}>
-        {/* Placeholder art symbol */}
-        <div style={{ textAlign:'center',opacity:0.3 }}>
-          <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:'3rem',color:'var(--cream)' }}>◈</div>
-          <div style={{ fontFamily:"'Cinzel',serif",fontSize:'0.55rem',letterSpacing:'.3em',color:'var(--cream)',marginTop:'0.5rem' }}>IMAGE</div>
-        </div>
+        {/* Real image */}
+        {image && (
+          <img src={image} alt={title} style={{
+            width: '100%', height: '100%',
+            objectFit: 'cover', display: 'block',
+            transition: 'transform .6s ease',
+          }} />
+        )}
 
-        {/* Hover overlay label */}
+        {/* Fallback symbol — only shows if no image */}
+        {!image && (
+          <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', opacity:0.3 }}>
+            <div style={{ textAlign:'center' }}>
+              <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'3rem', color:'var(--cream)' }}>◈</div>
+              <div style={{ fontFamily:"'Cinzel',serif", fontSize:'0.55rem', letterSpacing:'.3em', color:'var(--cream)', marginTop:'0.5rem' }}>IMAGE</div>
+            </div>
+          </div>
+        )}
+
+        {/* Hover overlay */}
         <div style={{
-          position:'absolute',inset:0,
+          position:'absolute', inset:0,
           background:'linear-gradient(to top,rgba(4,3,10,0.9) 0%,rgba(4,3,10,0.2) 60%,transparent 100%)',
-          display:'flex',alignItems:'flex-end',padding:'1.2rem',
+          display:'flex', alignItems:'flex-end', padding:'1.2rem',
           opacity:0, transition:'opacity .4s ease',
         }} className="gallery-overlay">
           <div>
-            <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:'1.2rem',color:'var(--cream)',fontWeight:500 }}>{title}</div>
-            <div style={{ fontFamily:"'EB Garamond',serif",fontSize:'0.85rem',color:'var(--gold)',fontStyle:'italic' }}>{medium}</div>
+            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.2rem', color:'var(--cream)', fontWeight:500 }}>{title}</div>
+            <div style={{ fontFamily:"'EB Garamond',serif", fontSize:'0.85rem', color:'var(--gold)', fontStyle:'italic' }}>{medium}</div>
           </div>
         </div>
       </div>
 
-      <div style={{ padding:'1rem 1.2rem',display:'flex',justifyContent:'space-between',alignItems:'baseline' }}>
+      <div style={{ padding:'1rem 1.2rem', display:'flex', justifyContent:'space-between', alignItems:'baseline' }}>
         <div>
-          <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:'1.05rem',color:'var(--cream)',fontWeight:500 }}>{title}</div>
-          <div style={{ fontFamily:"'EB Garamond',serif",fontSize:'0.85rem',color:'var(--silver-dim)',fontStyle:'italic' }}>{medium}</div>
+          <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.05rem', color:'var(--cream)', fontWeight:500 }}>{title}</div>
+          <div style={{ fontFamily:"'EB Garamond',serif", fontSize:'0.85rem', color:'var(--silver-dim)', fontStyle:'italic' }}>{medium}</div>
         </div>
-        <div style={{ fontFamily:"'Cinzel',serif",fontSize:'0.6rem',color:'var(--gold-dim)',letterSpacing:'.1em' }}>{year}</div>
+        <div style={{ fontFamily:"'Cinzel',serif", fontSize:'0.6rem', color:'var(--gold-dim)', letterSpacing:'.1em' }}>{year}</div>
       </div>
     </div>
   );
