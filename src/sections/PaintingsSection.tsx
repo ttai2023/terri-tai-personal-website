@@ -1,10 +1,17 @@
 import { useFadeUp } from '../hooks/useFadeUp';
 
-const paintings = [
-  { title: 'Fighter Jet', medium: 'Oil on canvas', image: '/fighter_jet.jpeg', year: '2024'},
-  { title: 'Lost Astronaut', medium: 'Oil on canvas', image: '/lost_astronaut.jpeg', year: '2024'},
-  { title: 'Rooftop Crash', medium: 'Oil on canvas', image: '/rooftop_crash.jpeg', year: '2023'},
-  { title: 'Space Underwater', medium: 'Oil on canvas', image: '/space_underwater.jpeg', year: '2023'},
+// 1. Import the images at the top of the file
+import fighterJetImg from '../assets/fighter_jet.jpeg';
+import lostAstronautImg from '../assets/lost_astronaut.jpeg';
+import rooftopCrashImg from '../assets/rooftop_crash.jpeg';
+import spaceUnderwaterImg from '../assets/space_underwater.jpeg';
+
+// 2. Use the imported variables in your array (no quotes needed!)
+const paintings =[
+  { title: 'Fighter Jet', medium: 'Oil on canvas', image: fighterJetImg, year: '2024'},
+  { title: 'Lost Astronaut', medium: 'Oil on canvas', image: lostAstronautImg, year: '2024'},
+  { title: 'Rooftop Crash', medium: 'Oil on canvas', image: rooftopCrashImg, year: '2023'},
+  { title: 'Space Underwater', medium: 'Oil on canvas', image: spaceUnderwaterImg, year: '2023'},
 ];
 
 const PaintingsSection = () => {

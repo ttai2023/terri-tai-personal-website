@@ -5,7 +5,7 @@ const AboutSection = () => {
   const textRef = useFadeUp();
   const tagsRef = useFadeUp();
 
-  const skills = [
+  const skills =[
     { label: 'Magic', icon: '✦' },
     { label: 'Oil Painting', icon: '◈' },
     { label: 'Guitar', icon: '♩' },
@@ -18,16 +18,30 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" style={{ minHeight: '80vh', padding: '8rem 3rem', position: 'relative', zIndex: 1 }}>
-      <div className="nebula" style={{ width: '40vw', height: '40vw', background: 'radial-gradient(circle,rgba(60,30,100,0.09) 0%,transparent 70%)', top: '20%', right: '-10%' }} />
+    <section id="about" style={{ minHeight: '80vh', padding: 'clamp(4rem, 10vh, 8rem) clamp(1.5rem, 5vw, 3rem)', position: 'relative', zIndex: 1 }}>
+      {/* Background nebula adapted to not overflow on small screens */}
+      <div className="nebula" style={{ width: 'clamp(200px, 40vw, 400px)', height: 'clamp(200px, 40vw, 400px)', background: 'radial-gradient(circle,rgba(60,30,100,0.09) 0%,transparent 70%)', top: '20%', right: '-10%', position: 'absolute' }} />
 
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-        <div ref={headRef} className="fade-up" style={{ marginBottom: '4rem' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        
+        <div ref={headRef} className="fade-up" style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
           <div className="section-label" style={{ marginBottom: '0.8rem' }}>✦ The Person</div>
           <h2 className="section-title">About Me</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start', marginBottom: '5rem' }}>
+        {/* 
+          MAGIC HAPPENS HERE: 
+          Instead of fixed '1fr 1fr', this dynamically breaks into 1 column on mobile 
+          and 2 columns on desktop. Gap also shrinks gracefully on smaller screens. 
+        */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', 
+          gap: 'clamp(3rem, 8vw, 5rem)', 
+          alignItems: 'start', 
+          marginBottom: '5rem' 
+        }}>
+          
           <div ref={textRef} className="fade-up">
             <p style={{ fontFamily: "'EB Garamond',serif", fontSize: '1.2rem', color: 'var(--silver)', lineHeight: 1.9, marginBottom: '1.5rem' }}>
               I'm Terri Tai — a Computer Engineering student at UC San Diego. By training, I build autonomous systems, robotics, and intelligent software. By nature, I make things that don't need to be useful or practical — just human.
@@ -41,12 +55,12 @@ const AboutSection = () => {
           </div>
 
           {/* Decorative quote */}
-          <div style={{ position: 'relative', padding: '2.5rem', background: 'rgba(13,11,30,0.5)', border: '1px solid rgba(201,169,110,0.1)' }}>
+          <div style={{ position: 'relative', padding: 'clamp(1.5rem, 5vw, 2.5rem)', background: 'rgba(13,11,30,0.5)', border: '1px solid rgba(201,169,110,0.1)' }}>
             <span className="ornament-corner ornament-tl" /><span className="ornament-corner ornament-tr" />
             <span className="ornament-corner ornament-bl" /><span className="ornament-corner ornament-br" />
 
-            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '4rem', color: 'var(--gold)', opacity: 0.15, lineHeight: 0.8, marginBottom: '1rem' }}>"</div>
-            <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.6rem', fontWeight: 300, fontStyle: 'italic', color: 'var(--cream)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(3rem, 8vw, 4rem)', color: 'var(--gold)', opacity: 0.15, lineHeight: 0.8, marginBottom: '1rem' }}>"</div>
+            <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(1.3rem, 4vw, 1.6rem)', fontWeight: 300, fontStyle: 'italic', color: 'var(--cream)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
               Creativity isn't separate from engineering — it powers it.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -77,7 +91,7 @@ const AboutSection = () => {
 
         <hr className="ornament" style={{ marginBottom: '3rem' }} />
 
-        {/* Skills/interests tags */}
+        {/* Skills/interests tags (Already inherently mobile friendly via flexWrap!) */}
         <div ref={tagsRef} className="fade-up">
           <div className="section-label" style={{ marginBottom: '1.5rem' }}>Interests & Disciplines</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>

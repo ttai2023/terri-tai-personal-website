@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 
+import profileImg from '../assets/profile.jpeg';
+
 const HeroSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
@@ -43,7 +45,7 @@ const HeroSection = () => {
           animation: 'floatOrb 6s ease-in-out infinite',
         }}>
           <img
-            src="/profile.jpeg"
+            src={profileImg}
             alt="Terri Tai"
             style={{
               width: '100%',

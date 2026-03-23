@@ -2,6 +2,7 @@ import { useFadeUp } from '../hooks/useFadeUp';
 
 const MagicSection = () => {
   const headRef = useFadeUp();
+  const philRef = useFadeUp(); // Added a new ref for the philosophy text
 
   const videos = [
     { title: 'Four Card Reveal ft Lan Gao', desc: 'A study in sleight of hand', url: 'https://www.youtube.com/embed/1bwCMJ58RMo' },
@@ -15,7 +16,9 @@ const MagicSection = () => {
       <div className="nebula" style={{ width:'50vw',height:'50vw',background:'radial-gradient(circle,rgba(60,20,100,0.12) 0%,transparent 70%)',top:'-10%',right:'-15%',zIndex:0 }}/>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div ref={headRef} className="fade-up" style={{ marginBottom:'5rem', textAlign:'center' }}>
+        
+        {/* Header */}
+        <div ref={headRef} className="fade-up" style={{ marginBottom:'3rem', textAlign:'center' }}>
           <div className="divider" style={{ marginBottom:'1.5rem' }}>
             <span style={{ fontFamily:"'Cinzel',serif",fontSize:'.65rem',letterSpacing:'.3em',color:'var(--gold)',textTransform:'uppercase' }}>
               ✦ &nbsp; The Art of Illusion &nbsp; ✦
@@ -27,12 +30,24 @@ const MagicSection = () => {
           </p>
         </div>
 
+        {/* Magic Philosophy */}
+        <div ref={philRef} className="fade-up" style={{ maxWidth: '750px', margin: '0 auto 5rem', textAlign: 'center' }}>
+          <p style={{ fontFamily:"'EB Garamond',serif", color:'var(--cream)', fontSize:'1.15rem', lineHeight: 1.8, marginBottom: '1.5rem', fontWeight: 300 }}>
+            For years, I obsessed over the technical perfection of illusions. But I soon realized that a flawlessly executed trick performed in silence is merely a puzzle. <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>The true magic doesn't happen in the hands of the magician—it happens in the minds of the audience.</span>
+          </p>
+          <p style={{ fontFamily:"'EB Garamond',serif", color:'var(--silver-dim)', fontSize:'1.05rem', lineHeight: 1.8 }}>
+            Today, my focus has shifted from the mechanics of the trick to the psychology of the experience. Whether I'm performing at a professional networking event or my grandfather's elderly home, my goal is to curate a shared moment of wonder. Magic is, at its core, my favorite way to tell stories, bridge gaps, and connect with people from all walks of life. Witness some of my live performances here.
+          </p>
+        </div>
+
+        {/* Videos Grid */}
         <div style={{ display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'2rem' }}>
           {videos.map((v,i) => (
             <VideoCard key={i} {...v} index={i} />
           ))}
         </div>
 
+        {/* Footer */}
         <div style={{ marginTop:'4rem',textAlign:'center' }}>
           <p style={{ fontFamily:"'EB Garamond',serif",fontStyle:'italic',color:'var(--silver-dim)',fontSize:'0.95rem',letterSpacing:'.05em' }}>
             Watch my performances and see the magic come alive!

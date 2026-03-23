@@ -47,7 +47,7 @@ const poems = [
   {
     title: 'An Ode to my love for you',
     year: 'October 2025',
-    note: 'Ruined the friendship',
+    note: 'Loving an avoidant',
     text: 
       `I want to take you to my favourite place
       where the ocean meets the cliffs 
@@ -625,13 +625,14 @@ const poems = [
 const PoetrySection = () => {
   const headRef = useFadeUp();
   const [active, setActive] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section id="poetry" style={{ minHeight: '100vh', padding: '8rem 3rem', position: 'relative', zIndex: 1 }}>
+    <section id="poetry" style={{ minHeight: '100vh', padding: '6rem 1.5rem', position: 'relative', zIndex: 1 }}>
       <div className="nebula" style={{ width: '50vw', height: '50vw', background: 'radial-gradient(circle,rgba(40,20,80,0.1) 0%,transparent 70%)', bottom: '-5%', left: '-15%' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div ref={headRef} className="fade-up" style={{ marginBottom: '5rem', textAlign: 'center' }}>
+        <div ref={headRef} className="fade-up" style={{ marginBottom: '3rem', textAlign: 'center' }}>
           <div className="section-label" style={{ marginBottom: '0.8rem' }}>✦ Verse</div>
           <h2 className="section-title" style={{ fontStyle: 'italic' }}>Poetry</h2>
           <p style={{ fontFamily: "'EB Garamond',serif", color: 'var(--silver-dim)', fontSize: '1.1rem', maxWidth: '460px', margin: '1rem auto 0', lineHeight: 1.8, fontStyle: 'italic' }}>
@@ -639,31 +640,48 @@ const PoetrySection = () => {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '4rem', alignItems: 'start' }}>
-          {/* Poem list */}
+        {/* Mobile: dropdown selector */}
+        <div style={{ display: 'none' }} className="mobile-poem-select">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              width: '100%', padding: '1rem 1.2rem',
+              background: 'rgba(13,11,30,0.7)', border: '1px solid rgba(201,169,110,0.2)',
+              color: 'var(--cream)', fontFamily: "'Cormorant Garamond',serif",
+              fontSize: '1.1rem', fontStyle: 'italic', cursor: 'pointer',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              marginBottom: menuOpen ? 0 : '2rem',
+            }}
+          >
+            <span>{poems[active].title}</span>
+            <span style={{ color: 'var(--gold)', fontSize: '0.8rem' }}>{menuOpen ? '▲' : '▼'}</span>
+          </button>
+          {menuOpen && (
+            <div style={{ background: 'rgba(8,6,20,0.95)', border: '1px solid rgba(201,169,110,0.15)', borderTop: 'none', marginBottom: '2rem' }}>
+              {poems.map((p, i) => (
+                <button key={i} onClick={() => { setActive(i); setMenuOpen(false); }}
+                  style={{
+                    display: 'block', width: '100%', textAlign: 'left',
+                    padding: '0.9rem 1.2rem', background: 'none',
+                    border: 'none', borderBottom: '1px solid rgba(255,255,255,0.04)',
+                    cursor: 'pointer',
+                  }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1rem', fontStyle: 'italic', color: i === active ? 'var(--cream)' : 'var(--silver-dim)' }}>{p.title}</div>
+                  <div style={{ fontFamily: "'Cinzel',serif", fontSize: '0.55rem', letterSpacing: '.15em', color: 'var(--gold-dim)' }}>{p.year}</div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Desktop: sidebar + poem */}
+        <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '4rem', alignItems: 'start' }} className="desktop-poem-grid">
           <div style={{ position: 'sticky', top: '7rem' }}>
             <div style={{ borderLeft: '1px solid rgba(201,169,110,0.15)', paddingLeft: '1.5rem' }}>
               {poems.map((p, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  style={{
-                    display: 'block', width: '100%', textAlign: 'left',
-                    background: 'none', border: 'none', cursor: 'none',
-                    padding: '1rem 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.04)',
-                    transition: 'all .3s',
-                  }}
-                >
-                  <div style={{
-                    fontFamily: "'Cormorant Garamond',serif",
-                    fontSize: i === active ? '1.2rem' : '1.05rem',
-                    color: i === active ? 'var(--cream)' : 'var(--silver-dim)',
-                    fontWeight: i === active ? 500 : 400,
-                    fontStyle: 'italic',
-                    transition: 'all .3s',
-                    marginBottom: '.15rem',
-                  }}>
+                <button key={i} onClick={() => setActive(i)}
+                  style={{ display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: '1rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'all .3s' }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: i === active ? '1.2rem' : '1.05rem', color: i === active ? 'var(--cream)' : 'var(--silver-dim)', fontWeight: i === active ? 500 : 400, fontStyle: 'italic', transition: 'all .3s', marginBottom: '.15rem' }}>
                     {p.title}
                   </div>
                   <div style={{ fontFamily: "'Cinzel',serif", fontSize: '0.58rem', letterSpacing: '.15em', color: i === active ? 'var(--gold)' : 'var(--gold-dim)' }}>
@@ -673,9 +691,12 @@ const PoetrySection = () => {
               ))}
             </div>
           </div>
-
-          {/* Active poem */}
           <PoemDisplay poem={poems[active]} key={active} />
+        </div>
+
+        {/* Mobile: poem display (shown below dropdown) */}
+        <div className="mobile-poem-display">
+          <PoemDisplay poem={poems[active]} key={`m-${active}`} />
         </div>
       </div>
     </section>

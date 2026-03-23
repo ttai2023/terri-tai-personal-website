@@ -31,7 +31,7 @@ const Navigation = () => {
       </button>
 
       <div style={{ display:'flex', gap:'2.5rem', alignItems:'center' }} className="hidden md:flex">
-        {[['magic','Magic'],['paintings','Paintings'],['music','Music'],['poetry','Poetry'],['about','About']].map(([id,label]) => (
+        {[['about','About'], ['magic','Magic'],['paintings','Paintings'],['poetry','Poetry'],['music','Music']].map(([id,label]) => (
           <button key={id} onClick={() => scrollTo(id)} className="nav-link" style={{ background:'none',border:'none' }}>{label}</button>
         ))}
         <a href="https://ttai2023.github.io/terri-tai-portfolio/" target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize:'0.57rem',padding:'.45rem 1.1rem' }}>

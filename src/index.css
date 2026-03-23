@@ -32,6 +32,11 @@ body{background:var(--void);color:var(--cream);font-family:'EB Garamond',Georgia
 body.cursor-hover .cursor{width:14px;height:14px;}
 body.cursor-hover .cursor-ring{width:50px;height:50px;border-color:rgba(201,169,110,0.6);}
 
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  button, a { cursor: pointer; }
+}
+
 /* Starfield */
 .starfield{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
@@ -106,3 +111,21 @@ hr.ornament{border:none;height:1px;background:linear-gradient(90deg,transparent 
 ::-webkit-scrollbar-track{background:var(--void);}
 ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
 ::selection{background:var(--gold-dim);color:var(--void);}
+
+/* Poetry mobile layout */
+@media (max-width: 768px) {
+  .desktop-poem-grid { display: none !important; }
+  .mobile-poem-select { display: block !important; }
+  .mobile-poem-display { display: block; }
+  
+  /* General mobile padding */
+  section { padding-left: 1.2rem !important; padding-right: 1.2rem !important; }
+  
+  /* Poem display tighter on mobile */
+  .fade-up[style*="padding: 3rem"] { padding: 1.5rem !important; }
+}
+
+@media (min-width: 769px) {
+  .mobile-poem-select { display: none !important; }
+  .mobile-poem-display { display: none !important; }
+}
