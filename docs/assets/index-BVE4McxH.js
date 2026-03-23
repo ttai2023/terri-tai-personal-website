@@ -45,7 +45,7 @@ Error generating stack: `+a.message+`
       and if i had nine lives, 
       i’d choose you in every single one
       to be nomadic free and broke
-      with you`},{title:"An Ode to my love for you",year:"October 2025",note:"Ruined the friendship",text:`I want to take you to my favourite place
+      with you`},{title:"An Ode to my love for you",year:"October 2025",note:"Loving an avoidant",text:`I want to take you to my favourite place
       where the ocean meets the cliffs 
       I once wanted to dive off of
 
