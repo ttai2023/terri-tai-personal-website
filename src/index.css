@@ -105,7 +105,13 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;border-color:rgba(201,169,
 hr.ornament{border:none;height:1px;background:linear-gradient(90deg,transparent 0%,var(--gold-dim) 30%,var(--gold) 50%,var(--gold-dim) 70%,transparent 100%);opacity:0.35;}
 
 /* Poem */
-.poem-line{font-family:'EB Garamond',serif;font-style:italic;color:var(--silver);line-height:2.2;font-size:1.1rem;}
+.poem-line{
+  font-family:'EB Garamond',serif;
+  font-style:'normal';
+  color:var(--silver);
+  line-height:2.2;
+  font-size:1.1rem;
+}
 
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--void);}

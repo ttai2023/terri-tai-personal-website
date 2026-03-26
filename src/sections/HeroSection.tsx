@@ -23,7 +23,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', padding: '8rem 2rem 4rem', textAlign: 'center', zIndex: 1 }}>
+    <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', padding: '8rem 2rem 8rem', textAlign: 'center', zIndex: 1 }}>
 
       {/* Orbit ring decoration */}
       <div ref={orbRef} style={{ position: 'relative', marginBottom: '3rem' }}>
@@ -95,7 +95,7 @@ const HeroSection = () => {
       </p>
 
       <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {[['magic','✦ See the Magic'],['paintings','View Paintings'],['music','Hear the Music']].map(([id,label]) => (
+        {[['magic','✦ See the Magic'],['paintings','View Paintings'],['poetry','Read the Poetry']].map(([id,label]) => (
           <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior:'smooth' })} className="btn-gold">{label}</button>
         ))}
       </div>

@@ -218,7 +218,7 @@ const poems = [
     {
       title: 'My Queen',
       year: 'Nov 2023',
-      note: 'Inspired by Queen Charlotte',
+      note: 'Inspired by King George and Queen Charlotte',
       text: 
         `I. - Mercury
         No one believed that I would survive
@@ -628,7 +628,7 @@ const PoetrySection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section id="poetry" style={{ minHeight: '100vh', padding: '6rem 1.5rem', position: 'relative', zIndex: 1 }}>
+    <section id="poetry" style={{ minHeight: '100vh', padding: '5rem 1.5rem', position: 'relative', zIndex: 1 }}>
       <div className="nebula" style={{ width: '50vw', height: '50vw', background: 'radial-gradient(circle,rgba(40,20,80,0.1) 0%,transparent 70%)', bottom: '-5%', left: '-15%' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -705,7 +705,7 @@ const PoetrySection = () => {
 
 const PoemDisplay = ({ poem }: { poem: typeof poems[0] }) => {
   const ref = useFadeUp();
-  const lines = poem.text.split('\n');
+  const lines = poem.text.split('\n').map(l => l.trim());
 
   return (
     <div ref={ref} className="fade-up" style={{ position: 'relative', padding: '3rem', background: 'rgba(13,11,30,0.5)', border: '1px solid rgba(201,169,110,0.08)' }}>

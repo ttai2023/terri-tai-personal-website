@@ -11,14 +11,14 @@ const MagicSection = () => {
   ];
 
   return (
-    <section id="magic" style={{ minHeight: '100vh', padding: '8rem 3rem', position: 'relative', zIndex: 1 }}>
+    <section id="magic" style={{ minHeight: '100vh', padding: '5rem 3rem', position: 'relative', zIndex: 1 }}>
       {/* Background accent */}
       <div className="nebula" style={{ width:'50vw',height:'50vw',background:'radial-gradient(circle,rgba(60,20,100,0.12) 0%,transparent 70%)',top:'-10%',right:'-15%',zIndex:0 }}/>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         {/* Header */}
-        <div ref={headRef} className="fade-up" style={{ marginBottom:'3rem', textAlign:'center' }}>
+        <div ref={headRef} className="fade-up" style={{ marginBottom:'2rem', textAlign:'center' }}>
           <div className="divider" style={{ marginBottom:'1.5rem' }}>
             <span style={{ fontFamily:"'Cinzel',serif",fontSize:'.65rem',letterSpacing:'.3em',color:'var(--gold)',textTransform:'uppercase' }}>
               ✦ &nbsp; The Art of Illusion &nbsp; ✦
@@ -31,7 +31,7 @@ const MagicSection = () => {
         </div>
 
         {/* Magic Philosophy */}
-        <div ref={philRef} className="fade-up" style={{ maxWidth: '750px', margin: '0 auto 5rem', textAlign: 'center' }}>
+        <div ref={philRef} className="fade-up" style={{ maxWidth: '750px', margin: '0 auto 3rem', textAlign: 'center' }}>
           <p style={{ fontFamily:"'EB Garamond',serif", color:'var(--cream)', fontSize:'1.15rem', lineHeight: 1.8, marginBottom: '1.5rem', fontWeight: 300 }}>
             For years, I obsessed over the technical perfection of illusions. But I soon realized that a flawlessly executed trick performed in silence is merely a puzzle. <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>The true magic doesn't happen in the hands of the magician—it happens in the minds of the audience.</span>
           </p>
